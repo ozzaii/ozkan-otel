@@ -54,4 +54,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         lazyImages.forEach(image => imageObserver.observe(image));
     }
+
+    // Mobile menu toggle
+    const menuToggle = document.createElement('button');
+    menuToggle.innerHTML = '&#9776;'; // Hamburger icon
+    menuToggle.classList.add('menu-toggle');
+    document.querySelector('header .container').prepend(menuToggle);
+
+    const nav = document.querySelector('header nav');
+    menuToggle.addEventListener('click', () => {
+        nav.classList.toggle('show');
+    });
 });
