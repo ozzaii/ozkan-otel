@@ -1,8 +1,10 @@
 :root {
     --primary-color: #1A3A3A;
     --secondary-color: #D4AF37;
+    --accent-color: #E5C158;
     --light-color: #F4F4F4;
     --dark-color: #333333;
+    --transition: all 0.3s ease-in-out;
 }
 
 * {
@@ -16,7 +18,6 @@ body {
     line-height: 1.6;
     color: var(--dark-color);
     background-color: var(--light-color);
-    padding-top: 80px; /* Added to account for fixed header */
 }
 
 .container {
@@ -27,13 +28,8 @@ body {
 
 /* Header Styles */
 header {
-    background-color: rgba(26, 58, 58, 0.9);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    transition: background-color 0.3s ease;
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 nav {
@@ -46,9 +42,14 @@ nav {
 .logo {
     color: var(--secondary-color);
     font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 700;
     text-decoration: none;
+    transition: var(--transition);
+}
+
+.logo:hover {
+    color: var(--accent-color);
 }
 
 .nav-links {
@@ -64,14 +65,30 @@ nav {
     color: var(--light-color);
     text-decoration: none;
     font-weight: 400;
-    transition: color 0.3s ease;
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    position: relative;
+    transition: var(--transition);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--secondary-color);
+    transition: var(--transition);
 }
 
 .nav-links a:hover {
     color: var(--secondary-color);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 .menu-toggle {
@@ -93,6 +110,11 @@ nav {
     color: var(--light-color);
 }
 
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .hero-content h1 {
     font-family: 'Playfair Display', serif;
     font-size: 3.5rem;
@@ -103,9 +125,6 @@ nav {
 .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .btn {
@@ -114,34 +133,35 @@ nav {
     color: var(--primary-color);
     padding: 0.8rem 1.5rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     font-size: 1rem;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: var(--transition);
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 700;
 }
 
 .btn:hover {
-    background: #E5C158;
+    background: var(--accent-color);
     transform: translateY(-3px);
     box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4);
 }
 
-/* Features Section */
-#features {
+/* Sections */
+section {
     padding: 5rem 0;
-    background: var(--light-color);
 }
 
-#features h2, #rooms h2, #gallery h2 {
+h2 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
     color: var(--primary-color);
+    font-family: 'Playfair Display', serif;
 }
 
+/* Features Section */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -154,7 +174,7 @@ nav {
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease-in-out;
+    transition: var(--transition);
 }
 
 .feature:hover {
@@ -177,14 +197,13 @@ nav {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
-    padding: 2rem 0;
 }
 
 .gallery-item {
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease-in-out;
+    transition: var(--transition);
 }
 
 .gallery-item:hover {
@@ -203,7 +222,6 @@ nav {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    padding: 2rem 0;
 }
 
 .room-card {
@@ -211,7 +229,7 @@ nav {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease-in-out;
+    transition: var(--transition);
 }
 
 .room-card:hover {
@@ -246,16 +264,7 @@ nav {
 /* Contact Section */
 #contact {
     background: linear-gradient(135deg, #1A3A3A, #2C5454);
-    padding: 5rem 0;
     color: var(--light-color);
-}
-
-#contact h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
 }
 
 .contact-wrapper {
@@ -266,12 +275,7 @@ nav {
     gap: 2rem;
 }
 
-.contact-form {
-    flex: 1;
-    min-width: 300px;
-}
-
-.contact-info {
+.contact-form, .contact-info {
     flex: 1;
     min-width: 300px;
 }
@@ -294,7 +298,7 @@ nav {
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.1);
     color: var(--light-color);
-    transition: background-color 0.3s ease;
+    transition: var(--transition);
 }
 
 .form-group input:focus,
@@ -330,7 +334,7 @@ nav {
     color: var(--light-color);
     font-size: 1.5rem;
     margin-right: 1rem;
-    transition: color 0.3s ease;
+    transition: var(--transition);
 }
 
 .social-links a:hover {
@@ -345,16 +349,8 @@ footer {
     padding: 2rem 0;
 }
 
-footer p {
-    margin-bottom: 1rem;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
-    body {
-        padding-top: 60px;
-    }
-
     .menu-toggle {
         display: block;
     }
@@ -365,7 +361,7 @@ footer p {
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: rgba(26, 58, 58, 0.95);
+        background-color: var(--primary-color);
         padding: 1rem 0;
         flex-direction: column;
         align-items: center;
