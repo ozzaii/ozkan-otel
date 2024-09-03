@@ -85,17 +85,19 @@ main {
 /* Hero Section */
 #hero {
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                url('main.jpeg') no-repeat center center/cover;
+                url('main1.webp') no-repeat center center;
+    background-size: cover;
     height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center;
     text-align: center;
     color: var(--light-color);
 }
 
 .hero-content {
     max-width: 800px;
-    margin: auto;
+    padding: 20px;
 }
 
 #hero h2 {
