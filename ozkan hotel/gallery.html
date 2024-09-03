@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri - Özkan Otel</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 2rem 0;
+        }
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Özkan Otel</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="index.html#features">Özellikler</a></li>
+                    <li><a href="gallery.html">Galeri</a></li>
+                    <li><a href="rooms.html">Odalar</a></li>
+                    <li><a href="index.html#contact">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="gallery">
+            <div class="container">
+                <h2>Otelimizden Görüntüler</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img data-src="https://source.unsplash.com/500x500/?hotel,room" alt="Otel Odası" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img data-src="https://source.unsplash.com/500x500/?mountain,lake" alt="Uzungöl Manzarası" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img data-src="https://source.unsplash.com/500x500/?turkish,breakfast" alt="Türk Kahvaltısı" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img data-src="https://source.unsplash.com/500x500/?hotel,lobby" alt="Otel Lobisi" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img data-src="https://source.unsplash.com/500x500/?mountain,hiking" alt="Doğa Yürüyüşü" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img data-src="https://source.unsplash.com/500x500/?hotel,restaurant" alt="Otel Restoranı" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Özkan Otel. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
