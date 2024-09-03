@@ -4,65 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odalar - Özkan Otel</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>
-        .rooms-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 2rem 0;
-        }
-        .room-card {
-            background: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease-in-out;
-        }
-        .room-card:hover {
-            transform: translateY(-10px);
-        }
-        .room-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .room-info {
-            padding: 1.5rem;
-        }
-        .room-info h3 {
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
-        .room-info p {
-            margin-bottom: 1rem;
-        }
-        .room-price {
-            font-weight: bold;
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-        }
-    </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>Özkan Otel</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Ana Sayfa</a></li>
-                    <li><a href="index.html#features">Özellikler</a></li>
-                    <li><a href="gallery.html">Galeri</a></li>
-                    <li><a href="rooms.html">Odalar</a></li>
-                    <li><a href="index.html#contact">İletişim</a></li>
-                </ul>
-            </nav>
-        </div>
+        <nav class="container">
+            <a href="index.html" class="logo">Özkan Otel</a>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="index.html#features">Özellikler</a></li>
+                <li><a href="gallery.html">Galeri</a></li>
+                <li><a href="rooms.html">Odalar</a></li>
+                <li><a href="index.html#contact">İletişim</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
-        <section id="rooms">
+        <section id="rooms" class="section">
             <div class="container">
                 <h2>Odalarımız</h2>
                 <div class="rooms-grid">
@@ -85,7 +47,7 @@
                         </div>
                     </div>
                     <div class="room-card">
-                        <img src="roomvip.jpeg" alt="Dağ Evi">
+                        <img src="roomvip.jpeg" alt="VIP Oda">
                         <div class="room-info">
                             <h3>VIP Oda</h3>
                             <p>Doğayla iç içe, manzaralı ve özel teraslı lüks konaklama.</p>
