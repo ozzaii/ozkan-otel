@@ -3,24 +3,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
     
-    // Change header background on scroll
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.backgroundColor = 'rgba(26, 58, 58, 1)';
-        } else {
-            header.style.backgroundColor = 'rgba(26, 58, 58, 0.9)';
-        }
-    });
+    // Scroll-based animations
+    const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.animate-on-scroll');
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            if (elementTop < windowHeight - 100) {
+                element.classList.add('animate');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', animateOnScroll);
     
-    // Mobile menu toggle
+    // Mobile menu toggle with smooth animation
     menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('show');
+        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        setTimeout(() => {
+            navLinks.classList.toggle('show');
+        }, 10);
     });
     
     // Close mobile menu when a link is clicked
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('show');
+            setTimeout(() => {
+                navLinks.style.display = 'none';
+            }, 300);
         });
     });
     
@@ -31,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                const headerOffset = 80;
+                const headerOffset = header.offsetHeight;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -43,15 +54,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Form submission
+    // Form submission with validation
     const contactForm = document.querySelector('#contact form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            // Here you would typically send the form data to a server
-            alert('Mesajınız gönderildi! Size en kısa sürede dönüş yapacağız.');
-            this.reset();
+            if (validateForm()) {
+                // Here you would typically send the form data to a server
+                alert('Mesajınız gönderildi! Size en kısa sürede dönüş yapacağız.');
+                this.reset();
+            }
         });
+    }
+
+    function validateForm() {
+        let isValid = true;
+        const inputs = contactForm.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                isValid = false;
+                input.classList.add('error');
+            } else {
+                input.classList.remove('error');
+            }
+        });
+        return isValid;
     }
 
     // Image lazy loading for gallery
@@ -70,4 +97,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         lazyImages.forEach(image => imageObserver.observe(image));
     }
+
+    // Parallax effect for hero section
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.pageYOffset;
+        const heroSection = document.querySelector('#hero');
+        heroSection.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+    });
+
+    // Initialize animations
+    animateOnScroll();
 });
