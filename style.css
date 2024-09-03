@@ -16,6 +16,7 @@ body {
     line-height: 1.6;
     color: var(--dark-color);
     background-color: var(--light-color);
+    padding-top: 80px; /* Added to account for fixed header */
 }
 
 .container {
@@ -30,6 +31,7 @@ header {
     position: fixed;
     width: 100%;
     top: 0;
+    left: 0;
     z-index: 1000;
     transition: background-color 0.3s ease;
 }
@@ -83,13 +85,12 @@ nav {
 
 /* Hero Section */
 #hero {
-    height: 100vh;
+    height: calc(100vh - 80px);
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('main1.webp') no-repeat center center/cover;
     display: flex;
     align-items: center;
     text-align: center;
     color: var(--light-color);
-    padding-top: 80px;
 }
 
 .hero-content h1 {
@@ -134,7 +135,7 @@ nav {
     background: var(--light-color);
 }
 
-#features h2 {
+#features h2, #rooms h2, #gallery h2 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
@@ -350,6 +351,10 @@ footer p {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+
     .menu-toggle {
         display: block;
     }
