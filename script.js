@@ -19,19 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Mobile menu toggle with smooth animation
     menuToggle.addEventListener('click', () => {
-        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        setTimeout(() => {
-            navLinks.classList.toggle('show');
-        }, 10);
+        navLinks.classList.toggle('show');
     });
     
     // Close mobile menu when a link is clicked
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-            navLinks.classList.remove('show');
-            setTimeout(() => {
-                navLinks.style.display = 'none';
-            }, 300);
+            if (window.innerWidth <= 768) {
+                navLinks.classList.remove('show');
+            }
         });
     });
     
